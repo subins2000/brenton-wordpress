@@ -1,1 +1,64 @@
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width"><title>ERROR 404 - Not Found !!</title><style>*{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//open.subinsb.com/cdn/img/404.png) 80% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}a{cursor:pointer;color:#0000EE;text-decoration: none;}</style></head><body><a href="http://subinsb.com/"><img src="http://open.subinsb.com/cdn/img/logo.png" alt="Open"><br/>for Subin's Blog</a><p><b>404.</b> <ins>The page doesn't exist.</ins></p><p>The requested URL <b><?echo$_SERVER['REQUEST_URI'];?></b> was not found on this server.  <ins>Maybe you have clicked a wrong link.</ins></p><a onclick="window.history.go(-1)">Return to previous page</a>, <a  onclick="window.location='http://'+window.location.host">Home Page</a></body></html>
+<?php
+/**
+ * The template for displaying 404 pages (not found).
+ *
+ * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ *
+ * @package Subin\'s_Blog_V2
+ */
+
+get_header(); ?>
+
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+
+      <section class="error-404 not-found">
+        <header class="page-header">
+          <h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'subinsb-2' ); ?></h1>
+        </header><!-- .page-header -->
+
+        <div class="page-content">
+          <p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'subinsb-2' ); ?></p>
+
+          <?php
+            get_search_form();
+
+            the_widget( 'WP_Widget_Recent_Posts' );
+
+            // Only show the widget if site has multiple categories.
+            if ( subinsb_2_categorized_blog() ) :
+          ?>
+
+          <div class="widget widget_categories">
+            <h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'subinsb-2' ); ?></h2>
+            <ul>
+            <?php
+              wp_list_categories( array(
+                'orderby'    => 'count',
+                'order'      => 'DESC',
+                'show_count' => 1,
+                'title_li'   => '',
+                'number'     => 10,
+              ) );
+            ?>
+            </ul>
+          </div><!-- .widget -->
+
+          <?php
+            endif;
+
+            /* translators: %1$s: smiley */
+            $archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'subinsb-2' ), convert_smilies( ':)' ) ) . '</p>';
+            the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+
+            the_widget( 'WP_Widget_Tag_Cloud' );
+          ?>
+
+        </div><!-- .page-content -->
+      </section><!-- .error-404 -->
+
+    </main><!-- #main -->
+  </div><!-- #primary -->
+
+<?php
+get_footer();

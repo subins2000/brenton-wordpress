@@ -1,8 +1,8 @@
 <?php
 /**
- * Subin's Blog V 1 Theme Customizer
+ * Subin\'s Blog V2 Theme Customizer.
  *
- * @package Subin's Blog V 1
+ * @package Subin\'s_Blog_V2
  */
 
 /**
@@ -10,17 +10,17 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function subinsb_v1_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+function subinsb_2_customize_register( $wp_customize ) {
+  $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+  $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+  $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 }
-add_action( 'customize_register', 'subinsb_v1_customize_register' );
+add_action( 'customize_register', 'subinsb_2_customize_register' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function subinsb_v1_customize_preview_js() {
-	wp_enqueue_script( 'subinsb_v1_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+function subinsb_2_customize_preview_js() {
+  wp_enqueue_script( 'subinsb_2_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
-add_action( 'customize_preview_init', 'subinsb_v1_customize_preview_js' );
+add_action( 'customize_preview_init', 'subinsb_2_customize_preview_js' );
