@@ -38,11 +38,28 @@
       <?php
       endif; ?>
     </div><!-- .site-branding -->
-
-    <nav id="site-navigation" class="main-navigation" role="navigation">
-      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'subinsb-2' ); ?></button>
+    <svg viewBox="0 0 100 100" id="search-toggle" onclick="toggleSearchForm()">
+      <use xlink:href="#shape-search"></use>
+    </svg>
+    <form id="search-form" class="content-wrapper <?php if(isset($_GET['s'])){ echo "active"; }?>" action="/">
+      <input type="search" name="s" class="search-field" placeholder="Type Here..." value="<?php if(isset($_GET['s'])){ echo htmlspecialchars($_GET['s']); }?>" />
+      <button type="submit">Search</button>
+      <script>
+        window.toggleSearchForm = function(){
+          el = document.getElementById("search-form");
+          cn = "active";
+          if(el.className.match(cn)) {
+            el.className = 'content-wrapper';
+          }else {
+            el.className = 'content-wrapper ' + cn;
+            el.querySelector("input").focus();
+          }
+        };
+      </script>
+    </form>
+    <nav id="site-navigation" class="main-navigation content-wrapper" role="navigation">
       <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
     </nav><!-- #site-navigation -->
   </header><!-- #masthead -->
 
-  <div id="content" class="site-content">
+  <div id="content" class="site-content content-wrapper">

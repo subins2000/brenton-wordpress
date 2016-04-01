@@ -150,3 +150,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+function nav_parent_class( $classes, $item ) {
+    if($item->menu_item_parent == 0){
+      $classes[] = "current-menu-parent";
+    }
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'nav_parent_class', 10, 2 );

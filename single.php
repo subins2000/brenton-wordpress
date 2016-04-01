@@ -7,8 +7,11 @@
  * @package Subin\'s_Blog_V2
  */
 
-get_header(); ?>
-
+get_header();
+?>
+  <div id="single-header">
+    <h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
+  </div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
