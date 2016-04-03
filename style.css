@@ -128,21 +128,12 @@ abbr[title] {
 }
 
 /**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-
-b,
-strong {
-  font-weight: inherit;
-}
-
-/**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 /**
@@ -161,6 +152,7 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  font-weight: 500;
 }
 
 /**
@@ -507,6 +499,8 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 
 #search-form.active input{
   width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 #site-navigation ul{
@@ -523,10 +517,9 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 }
 
 #site-navigation li.current-menu-parent{
-  display: inline-block;
+  float: left;
   width: 16.6666%;
   position: relative;
-  margin-left: -4px;
   color: #fff;
   cursor: default;
 }
@@ -589,10 +582,11 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 }
 
 .content-box{
-  margin: 20px;
+  margin: 40px 20px;
   padding: 40px;
   background: #fff;
   color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 .content-box h1, .content-box h2, .content-box h3, .content-box h4{
@@ -608,8 +602,12 @@ article{
 }
 
 article.summary.category-short-post{
-  background-image: linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black 75%, transparent 75%, transparent);
-  background-size: 4px 4px;
+  background-color: #d49b00;
+  color: #fff;
+}
+
+article.summary.category-short-post a{
+  color: #000;
 }
 
 article.summary .entry-title{
@@ -695,7 +693,7 @@ pre.prettyprinted{
   padding: 50px 10px 40px;
   text-align: center;
   font-size: 1rem;
-  color: #000;
+  color: #050;
 }
 
 #single-header .entry-title, #single-header a{
@@ -726,6 +724,28 @@ pre.prettyprinted{
 
 .demo{
   background:rgba(0,170,0,.6);
+}
+
+/**
+ * Post Footer
+ */
+#post-navigation{
+  padding: 0px;
+  text-align: center;
+  background: white;
+}
+
+#post-navigation a{
+  color: black !important;
+}
+
+#post-navigation .nav-previous{
+  padding: 20px 0px;
+}
+
+#post-navigation .nav-next{
+  border-top: 2px solid #CCC;
+  padding: 20px 0px;
 }
 
 /**
@@ -806,6 +826,16 @@ footer .site-info{
   margin: -4px -4px 0 0
 }
 
+@media screen and (min-width: 830px){
+  #site-navigation li.current-menu-parent:nth-child(1){
+    border-top-left-radius: 20px;
+  }
+  
+  #site-navigation li.current-menu-parent:nth-child(6){
+    border-top-right-radius: 20px;
+  }
+}
+
 @media screen and (max-width: 992px){
   .content-wrapper{
     width: 100%;
@@ -814,7 +844,7 @@ footer .site-info{
 
 @media screen and (max-width: 830px){
   #site-navigation li.current-menu-parent{
-    width: 33.5% !important;
+    width: 33.33333% !important;
   }
   
   .content-box{

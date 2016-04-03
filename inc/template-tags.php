@@ -141,8 +141,9 @@ if ( ! function_exists( 'subinsb_2_paging_nav' ) ) :
     if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
       return;
     }
+    $wp_query = $GLOBALS['wp_query'];
     ?>
-    <nav class="navigation paging-navigation module" role="navigation">
+    <nav class="navigation paging-navigation content-box" role="navigation">
       <div class="nav-links">
        <?php if ( get_next_posts_link() ) : ?>
         <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'subinsb-2' ) ); ?></div>
@@ -151,6 +152,33 @@ if ( ! function_exists( 'subinsb_2_paging_nav' ) ) :
        <?php if ( get_previous_posts_link() ) : ?>
         <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'subinsb-2' ) ); ?></div>
        <?php endif; ?>
+      </div><!-- .nav-links -->
+    </nav><!-- .navigation -->
+   <?php
+  }
+endif;
+
+if ( ! function_exists( 'subinsb_2_post_nav' ) ) :
+  /**
+   * Display navigation to next/previous post when applicable.
+   *
+   * @return void
+   */
+  function subinsb_2_post_nav() {
+    // Don't print empty markup if there's nowhere to navigate.
+    $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+    $next     = get_adjacent_post( false, '', false );
+  
+    if ( ! $next && ! $previous ) {
+      return;
+    }
+   ?>
+    <nav id="post-navigation" class="content-box" role="navigation">
+      <div class="nav-links">
+      <?php
+      previous_post_link( '<div class="nav-previous"><div>Previous Post</div>%link</div>', _x( ' %title', 'Previous post link', 'subinsb-2' ) );
+      next_post_link(     '<div class="nav-next"><div>Next Post</div>%link</div>',     _x( '%title', 'Next post link',     'subinsb-2' ) );
+      ?>
       </div><!-- .nav-links -->
     </nav><!-- .navigation -->
    <?php

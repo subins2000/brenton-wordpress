@@ -15,7 +15,7 @@
 
   <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="footer-nav">
-      <blockquote>Sharing is Caring<br/>Long Live Free & Open Source Softwares</blockquote>
+      <blockquote>I'm a socialist and a <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software" target="_blank">FOSS</a> developer<br/>Teenage is sweet !</blockquote>
       <div style="text-align: center;">
         <div class="side">
           <h2>Site Links</h2>

@@ -41,7 +41,7 @@ get_header();
 
       endwhile;
 
-      the_posts_navigation();
+      subinsb_2_paging_nav();
 
     else :
 
