@@ -11,6 +11,25 @@ get_header();
 ?>
   <div id="single-header">
     <h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
+    <div class="entry-meta">
+      <?php edit_post_link( __( 'Edit', 'subinsb-2' ), '<span class="edit-link">', '</span><br/>' ); ?>
+      <?php subinsb_2_breadcrumbs();?>
+      <?php subinsb_2_posted_on(); ?>
+      <div>
+        <?php
+        if('post' == get_post_type()){
+          $tags_list = get_the_tag_list( '', __( ', ', 'subinsb-2' ) );
+          if($tags_list){
+        ?>
+          <div class="tags-links" title="Tags">
+            <?php printf( __( '%1$s', 'subinsb-2' ), $tags_list ); ?>
+          </div>
+        <?php
+          }
+        }
+        ?>
+      </div>
+    </div><!-- .entry-meta -->
   </div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -20,12 +39,12 @@ get_header();
 
       get_template_part( 'template-parts/content', get_post_format() );
 
-      the_post_navigation();
-
       // If comments are open or we have at least one comment, load up the comment template.
       if ( comments_open() || get_comments_number() ) :
         comments_template();
       endif;
+      
+      subinsb_2_paging_nav();
 
     endwhile; // End of the loop.
     ?>

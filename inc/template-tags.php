@@ -11,26 +11,32 @@ if ( ! function_exists( 'subinsb_2_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function subinsb_2_posted_on() {
-  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-  if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-    $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+function subinsb_2_posted_on($short=false) {
+  $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+  if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) && !$short) {
+    $time_string .= '<br/>Updated <time class="updated" datetime="%3$s">%4$s</time>';
   }
-
   $time_string = sprintf( $time_string,
     esc_attr( get_the_date( 'c' ) ),
     esc_html( get_the_date() ),
     esc_attr( get_the_modified_date( 'c' ) ),
     esc_html( get_the_modified_date() )
   );
-
-  $posted_on = sprintf(
-    esc_html_x( '%s', 'post date', 'subinsb-2' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-  );
-
-  echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
-
+  if(!$short) {
+    printf( __( '<span class="posted-on">Published %1$s</span>', 'subinsb-2' ),
+      sprintf( '%2$s',
+         esc_url( get_permalink() ),
+         $time_string
+       )
+    );
+  } else {
+    printf( __( '<span class="posted-on">%1$s</span>', 'subinsb-2' ),
+      sprintf( '<a href="%1$s" rel="bookmark" class="post-nav-item">%2$s</a>',
+         esc_url( get_permalink() ),
+         $time_string
+       )
+    );
+  }
 }
 endif;
 
@@ -115,3 +121,38 @@ function subinsb_2_category_transient_flusher() {
 }
 add_action( 'edit_category', 'subinsb_2_category_transient_flusher' );
 add_action( 'save_post',     'subinsb_2_category_transient_flusher' );
+
+if(!function_exists("subinsb_v1_breadcrumbs")){
+  function subinsb_2_breadcrumbs(){
+    if ( function_exists('yoast_breadcrumb') ) {
+      yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+    }
+  }
+}
+
+if ( ! function_exists( 'subinsb_2_paging_nav' ) ) :
+  /**
+   * Display navigation to next/previous set of posts when applicable.
+   *
+   * @return void
+   */
+  function subinsb_2_paging_nav() {
+    // Don't print empty markup if there's only one page.
+    if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+      return;
+    }
+    ?>
+    <nav class="navigation paging-navigation module" role="navigation">
+      <div class="nav-links">
+       <?php if ( get_next_posts_link() ) : ?>
+        <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'subinsb-2' ) ); ?></div>
+       <?php endif; ?>
+    
+       <?php if ( get_previous_posts_link() ) : ?>
+        <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'subinsb-2' ) ); ?></div>
+       <?php endif; ?>
+      </div><!-- .nav-links -->
+    </nav><!-- .navigation -->
+   <?php
+  }
+endif;

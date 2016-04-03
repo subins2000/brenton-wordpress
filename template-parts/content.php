@@ -9,37 +9,40 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("content-box"); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( (!is_single() ? "summary " : "") . "content-box"); ?>>
   <header class="entry-header">
     <?php
       if ( !is_single() ) {
         the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-        if ( 'post' === get_post_type() ) : ?>
+        if ( 'post' === get_post_type() ){ ?>
           <div class="entry-meta">
-            <?php subinsb_2_posted_on(); ?>
-          </div><!-- .entry-meta -->
+            <?php
+            /* edit_post_link( __( 'Edit', 'subinsb-2' ), '<span class="edit-link">', '</span>' ); */
+            $categories_list = get_the_category_list( __( ', ', 'subinsb-2' ) );
+            if($categories_list && subinsb_2_categorized_blog()){
+            ?>
+              <span class="cat-links post-nav-item"><?php 
+              printf( __( '%1$s', 'subinsb-2' ), $categories_list );
+              ?></span>
+            <?php
+            }
+            subinsb_2_posted_on(true);
+            ?>
+            <a href="<?php echo get_permalink();?>#disqus_thread" class="post-nav-item"></a>
+          </div>
         <?php
-        endif;
+        }
       }
     ?>
   </header><!-- .entry-header -->
 
   <div class="entry-content">
     <?php
-      the_content( sprintf(
-        /* translators: %s: Name of current post. */
-        wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'subinsb-2' ), array( 'span' => array( 'class' => array() ) ) ),
-        the_title( '<span class="screen-reader-text">"', '"</span>', false )
-      ) );
-
-      wp_link_pages( array(
-        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'subinsb-2' ),
-        'after'  => '</div>',
-      ) );
+      if(is_single()){
+        the_content();
+      }else{
+        the_excerpt();
+      }
     ?>
   </div><!-- .entry-content -->
-
-  <footer class="entry-footer">
-    <?php subinsb_2_entry_footer(); ?>
-  </footer><!-- .entry-footer -->
 </article><!-- #post-## -->

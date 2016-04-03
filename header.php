@@ -16,7 +16,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css' async='async'>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css" async="async">
+<script src="http://subinsblog.disqus.com/count.js" async="async"></script>
 <?php wp_head(); ?>
 </head>
 
