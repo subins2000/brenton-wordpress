@@ -17,7 +17,8 @@
         if ( 'post' === get_post_type() ){ ?>
           <div class="entry-meta">
             <?php
-            /* edit_post_link( __( 'Edit', 'subinsb-2' ), '<span class="edit-link">', '</span>' ); */
+            subinsb_2_posted_on(true);
+            subinsb_2_comments_count();
             $categories_list = get_the_category_list( __( ', ', 'subinsb-2' ) );
             if($categories_list && subinsb_2_categorized_blog()){
             ?>
@@ -26,9 +27,7 @@
               ?></span>
             <?php
             }
-            subinsb_2_posted_on(true);
             ?>
-            <a href="<?php echo get_permalink();?>#disqus_thread" class="post-nav-item"></a>
           </div>
         <?php
         }

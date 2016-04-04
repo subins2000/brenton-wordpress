@@ -13,8 +13,11 @@ get_header();
     <h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
     <div class="entry-meta">
       <?php edit_post_link( __( 'Edit', 'subinsb-2' ), '<span class="edit-link">', '</span><br/>' ); ?>
-      <?php subinsb_2_breadcrumbs();?>
-      <?php subinsb_2_posted_on(); ?>
+      <?php
+      subinsb_2_breadcrumbs();
+      subinsb_2_posted_on();echo "<br/>";
+      subinsb_2_comments_count();
+      ?>
       <div>
         <?php
         if('post' == get_post_type()){

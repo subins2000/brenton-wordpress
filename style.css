@@ -594,6 +594,16 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 }
 
 /**
+ * Widget
+ */
+#mc_signup_submit{
+  margin-top: 0 !important;
+}
+#mc_message{
+  padding-top: 0 !important;
+}
+
+/**
  * Post Styles
  */
 article{
@@ -677,6 +687,10 @@ pre.prettyprinted{
   border: none;
 }
 
+pre p, blockquote p{
+  margin: 0;
+}
+
 .entry-content table{
   width: 100%;
 }
@@ -684,6 +698,10 @@ pre.prettyprinted{
 .entry-content table td{
   padding: 5px;
   border: 1px solid black;
+}
+
+header.content-box h1{
+  margin: 0;
 }
 
 /**

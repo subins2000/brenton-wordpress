@@ -184,3 +184,9 @@ if ( ! function_exists( 'subinsb_2_post_nav' ) ) :
    <?php
   }
 endif;
+
+if(!function_exists("subinsb_2_comments_count")){
+  function subinsb_2_comments_count(){
+    echo is_single() ? '<a href="#disqus_thread" class="post-nav-item"></a>' : '<a href="'. get_permalink() .'#disqus_thread" class="post-nav-item"></a>';
+  }
+}

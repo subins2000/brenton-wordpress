@@ -17,7 +17,6 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css" async="async">
-<script src="http://subinsblog.disqus.com/count.js" async="async"></script>
 <?php wp_head(); ?>
 </head>
 
@@ -42,8 +41,8 @@
     <svg viewBox="0 0 100 100" id="search-toggle" onclick="toggleSearchForm()">
       <use xlink:href="#shape-search"></use>
     </svg>
-    <form id="search-form" class="content-wrapper <?php if(isset($_GET['s'])){ echo "active"; }?>" action="/">
-      <input type="search" name="s" class="search-field" placeholder="Type Here..." value="<?php if(isset($_GET['s'])){ echo htmlspecialchars($_GET['s']); }?>" />
+    <form id="search-form" class="content-wrapper" action="/">
+      <input type="search" name="s" class="search-field" placeholder="Type Here..." value="<?php echo get_search_query();?>" />
       <button type="submit">Search</button>
       <script>
         window.toggleSearchForm = function(){

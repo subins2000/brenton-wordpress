@@ -9,14 +9,15 @@
 
 get_header(); ?>
 
-  <section id="primary" class="content-area">
+  <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
     <?php
     if ( have_posts() ) : ?>
 
-      <header class="page-header">
+      <header class="page-header content-box">
         <h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'subinsb-2' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+        <?php get_search_form();?>
       </header><!-- .page-header -->
 
       <?php
@@ -32,7 +33,7 @@ get_header(); ?>
 
       endwhile;
 
-      the_posts_navigation();
+      subinsb_2_paging_nav();
 
     else :
 
@@ -41,7 +42,7 @@ get_header(); ?>
     endif; ?>
 
     </main><!-- #main -->
-  </section><!-- #primary -->
+  </div><!-- #primary -->
 
 <?php
 get_sidebar();
