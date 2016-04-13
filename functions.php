@@ -150,3 +150,18 @@ function nav_parent_class( $classes, $item ) {
     return $classes;
 }
 add_filter( 'nav_menu_css_class', 'nav_parent_class', 10, 2 );
+
+// This function adds nice anchor with id attribute to our h2 tags for reference
+// @link: http://www.w3.org/TR/html4/struct/links.html#h-12.2.3
+function anchor_content_headings($content) {
+    // now run the pattern and callback function on content
+    // and process it through a function that replaces the title with an id 
+    $content = preg_replace_callback("/\<h([1|2|3])\>(.*?)\<\/h([1|2|3])\>/", function ($matches) {
+      $hTag = $matches[1];
+      $title = $matches[2];
+      $slug = "article-" . sanitize_title_with_dashes($title);
+      return '<a href="#'. $slug .'"><h'. $hTag .' id="' . $slug . '">' . $title . '</h'. $hTag .'></a>';
+    }, $content);
+    return $content;
+}
+add_filter('the_content', 'anchor_content_headings');

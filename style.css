@@ -133,7 +133,7 @@ abbr[title] {
 
 b,
 strong {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /**
@@ -226,14 +226,6 @@ pre,
 samp {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
-}
-
-/**
- * Add the correct margin in IE 8.
- */
-
-figure {
-  margin: 1em 40px;
 }
 
 /**
@@ -401,13 +393,37 @@ textarea {
  * Start
  */
 body{
-  background: -webkit-linear-gradient(top, #eee, #4CA454);
-  background: linear-gradient(to bottom, #eee, #4CA454);
   overflow-x: hidden;
   font-family: Ubuntu, sans-serif;
   font-weight: 400;
   color: #fff;
   line-height: 1.5;
+  background: #000;
+}
+
+body:before{
+	content: "";
+	position: fixed;
+  top: -50%;
+  left: -50%;
+  bottom: -50%;
+  right: -50%;
+	z-index: -1;
+	-webkit-transform: rotate(-30deg);
+	-moz-transform: rotate(-30deg);
+	-ms-transform: rotate(-30deg);
+	-o-transform: rotate(-30deg);
+	transform: rotate(-30deg);
+  background-image: url("/wp-content/themes/subinsb-2/bg.png");
+  background-color: #000;
+  background-repeat: repeat;
+  -moz-animation: swim 2s linear infinite;
+  -webkit-animation: swim 2s linear infinite;
+}
+
+@-webkit-keyframes swim {
+    from { background-position: 0 0; }
+    to  { background-position: -800px 0; }
 }
 
 a{
@@ -440,7 +456,6 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 
 .site-header{
   text-align: center;
-  background: #000;
 }
 
 .site-header a{
@@ -499,8 +514,6 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 
 #search-form.active input{
   width: 100%;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 }
 
 #site-navigation ul{
@@ -522,6 +535,11 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   position: relative;
   color: #fff;
   cursor: default;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
+}
+
+#site-navigation li.current-menu-parent:hover{
+  box-shadow: 0 0 0 #FFF;
 }
 
 #site-navigation li .sub-menu{
@@ -599,8 +617,13 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 #mc_signup_submit{
   margin-top: 0 !important;
 }
+
 #mc_message{
   padding-top: 0 !important;
+}
+
+#mailchimpsf_widget-2{
+  background: repeating-linear-gradient( 45deg, #CCC, #CCC 10px, #FFFFFF 10px, #FFFFFF 20px );
 }
 
 /**
@@ -704,6 +727,11 @@ header.content-box h1{
   margin: 0;
 }
 
+.entry-content figure, .entry-content img{
+  margin: 0;
+  max-width: 100%;
+}
+
 /**
  * Single Post
  */
@@ -801,7 +829,6 @@ footer .site-info{
   position: relative;
   margin: 0px 40px -10px;
   padding: 40px 40px 20px 40px;
-  background: black;
   border: 2px solid #ccc;
   border-bottom: 0px;
 }
@@ -844,19 +871,12 @@ footer .site-info{
   margin: -4px -4px 0 0
 }
 
-@media screen and (min-width: 830px){
-  #site-navigation li.current-menu-parent:nth-child(1){
-    border-top-left-radius: 20px;
-  }
-  
-  #site-navigation li.current-menu-parent:nth-child(6){
-    border-top-right-radius: 20px;
-  }
-}
-
 @media screen and (max-width: 992px){
   .content-wrapper{
     width: 100%;
+  }
+  #SocializerFloatW{
+    display: none;
   }
 }
 

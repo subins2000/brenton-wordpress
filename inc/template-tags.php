@@ -124,9 +124,17 @@ add_action( 'save_post',     'subinsb_2_category_transient_flusher' );
 
 if(!function_exists("subinsb_v1_breadcrumbs")){
   function subinsb_2_breadcrumbs(){
-    if ( function_exists('yoast_breadcrumb') ) {
-      yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
-    }
+    echo "<p>";
+      $cats = get_the_category(); //retrieve cats for post
+      
+      foreach ($cats as $cat) { //go thru to find child one - means cat which has specified parent id
+          if ($cat->category_parent != 0) {
+              $child = $cat->term_taxonomy_id;
+          }
+      }
+      echo get_category_parents( $child, TRUE, ' » ' );
+      echo the_title();
+    echo "</p>";
   }
 }
 
