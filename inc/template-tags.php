@@ -133,7 +133,7 @@ if(!function_exists("subinsb_v1_breadcrumbs")){
     }
     $parents = get_category_parents( $child, TRUE, ' » ' );
     if(is_string($parents)){
-      echo "<p>". $parents . the_title() . "</p>";
+      echo "<p>". $parents . get_the_title() . "</p>";
     }
   }
 }

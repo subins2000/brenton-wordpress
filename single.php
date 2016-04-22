@@ -12,13 +12,10 @@ get_header();
   <div id="single-header">
     <h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
     <div class="entry-meta">
-      <?php edit_post_link( __( 'Edit', 'subinsb-2' ), '<span class="edit-link">', '</span><br/>' ); ?>
       <?php
       subinsb_2_breadcrumbs();
-      subinsb_2_posted_on();echo "<br/>";
-      subinsb_2_comments_count();
       ?>
-      <div>
+      <p>
         <?php
         if('post' == get_post_type()){
           $tags_list = get_the_tag_list( '', __( ', ', 'subinsb-2' ) );
@@ -31,7 +28,13 @@ get_header();
           }
         }
         ?>
-      </div>
+      </p>
+      <?php
+      subinsb_2_posted_on();
+      echo "<p>".
+        subinsb_2_comments_count();
+      echo "</p>";
+      ?>
     </div><!-- .entry-meta -->
   </div>
   <div id="primary" class="content-area">
