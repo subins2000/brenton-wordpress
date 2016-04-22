@@ -42,6 +42,8 @@ get_header();
 
       get_template_part( 'template-parts/content', get_post_format() );
       
+      subinsb_2_post_social();
+      
       subinsb_2_post_nav();
 
       comments_template();

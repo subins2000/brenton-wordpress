@@ -124,17 +124,17 @@ add_action( 'save_post',     'subinsb_2_category_transient_flusher' );
 
 if(!function_exists("subinsb_v1_breadcrumbs")){
   function subinsb_2_breadcrumbs(){
-    echo "<p>";
-      $cats = get_the_category(); //retrieve cats for post
-      
-      foreach ($cats as $cat) { //go thru to find child one - means cat which has specified parent id
-          if ($cat->category_parent != 0) {
-              $child = $cat->term_taxonomy_id;
-          }
-      }
-      echo get_category_parents( $child, TRUE, ' » ' );
-      echo the_title();
-    echo "</p>";
+    $cats = get_the_category(); //retrieve cats for post
+    
+    foreach ($cats as $cat) { //go thru to find child one - means cat which has specified parent id
+        if ($cat->category_parent != 0) {
+            $child = $cat->term_taxonomy_id;
+        }
+    }
+    $parents = get_category_parents( $child, TRUE, ' » ' );
+    if(is_string($parents)){
+      echo "<p>". $parents . the_title() . "</p>";
+    }
   }
 }
 
@@ -192,6 +192,20 @@ if ( ! function_exists( 'subinsb_2_post_nav' ) ) :
    <?php
   }
 endif;
+
+if(!function_exists("subinsb_2_post_social")){
+  function subinsb_2_post_social(){
+    ?>
+    <div id="post-social" class="content-box">
+      <iframe src="https://www.facebook.com/plugins/like.php?href=<?php echo the_permalink();?>&width=50&layout=box_count&action=like&show_faces=true&share=true&height=65&appId=205948326169147" width="50" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" width="50" height="60"></iframe>
+      <iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&size=tall&hl=en-US&url=<?php echo the_permalink();?>&parent=<?php echo site_url();?>" allowtransparency="true" frameborder="0" scrolling="no" title="+1" width="50" height="65"></iframe>
+      <iframe src="https://platform.twitter.com/widgets/tweet_button.html?url=<?php echo the_permalink();?>&count=vertical&size=large" frameborder="0" height="30" width="62"></iframe>
+      <script>reddit_url='<?php echo the_permalink();?>';</script>
+      <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+    </div>
+    <?php
+  }
+}
 
 if(!function_exists("subinsb_2_comments_count")){
   function subinsb_2_comments_count(){
