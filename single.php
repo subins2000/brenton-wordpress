@@ -31,9 +31,7 @@ get_header();
       </p>
       <?php
       subinsb_2_posted_on();
-      echo "<p>".
-        subinsb_2_comments_count();
-      echo "</p>";
+      subinsb_2_comments_count();
       ?>
     </div><!-- .entry-meta -->
   </div>
