@@ -174,6 +174,14 @@ function wpdocs_dequeue_script() {
 } 
 add_action( 'wp_print_scripts', 'wpdocs_dequeue_script', 100 );
 
+function disable_emojicons_tinymce( $plugins ) {
+  if ( is_array( $plugins ) ) {
+    return array_diff( $plugins, array( 'wpemoji' ) );
+  } else {
+    return array();
+  }
+}
+
 function disable_wp_emojicons() {
 
   // all actions related to emojis
