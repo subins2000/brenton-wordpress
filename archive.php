@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 get_header(); ?>
@@ -35,7 +35,7 @@ get_header(); ?>
 
       endwhile;
 
-      subinsb_2_paging_nav();
+      brenton_paging_nav();
 
     else :
 

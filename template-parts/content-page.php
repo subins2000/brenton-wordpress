@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 ?>
@@ -19,7 +19,7 @@
       the_content();
 
       wp_link_pages( array(
-        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'subinsb-2' ),
+        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'brenton' ),
         'after'  => '</div>',
       ) );
     ?>
@@ -30,7 +30,7 @@
       edit_post_link(
         sprintf(
           /* translators: %s: Name of current post */
-          esc_html__( 'Edit %s', 'subinsb-2' ),
+          esc_html__( 'Edit %s', 'brenton' ),
           the_title( '<span class="screen-reader-text">"', '"</span>', false )
         ),
         '<span class="edit-link">',

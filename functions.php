@@ -1,13 +1,13 @@
 <?php
 /**
- * Subin\'s Blog V2 functions and definitions.
+ * Brenton functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
-if ( ! function_exists( 'subinsb_2_setup' ) ) :
+if ( ! function_exists( 'brenton_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'subinsb_2_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function subinsb_2_setup() {
+function brenton_setup() {
   /*
    * Make theme available for translation.
    * Translations can be filed in the /languages/ directory.
    * If you're building a theme based on Subin\'s Blog V2, use a find and replace
-   * to change 'subinsb-2' to the name of your theme in all the template files.
+   * to change 'brenton' to the name of your theme in all the template files.
    */
-  load_theme_textdomain( 'subinsb-2', get_template_directory() . '/languages' );
+  load_theme_textdomain( 'brenton', get_template_directory() . '/languages' );
 
   // Add default posts and comments RSS feed links to head.
   add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ function subinsb_2_setup() {
 
   // This theme uses wp_nav_menu() in one location.
   register_nav_menus( array(
-    'primary' => esc_html__( 'Primary', 'subinsb-2' ),
+    'primary' => esc_html__( 'Primary', 'brenton' ),
   ) );
 
   /*
@@ -72,13 +72,13 @@ function subinsb_2_setup() {
   ) );
 
   // Set up the WordPress core custom background feature.
-  add_theme_support( 'custom-background', apply_filters( 'subinsb_2_custom_background_args', array(
+  add_theme_support( 'custom-background', apply_filters( 'brenton_custom_background_args', array(
     'default-color' => 'ffffff',
     'default-image' => '',
   ) ) );
 }
 endif;
-add_action( 'after_setup_theme', 'subinsb_2_setup' );
+add_action( 'after_setup_theme', 'brenton_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -87,36 +87,36 @@ add_action( 'after_setup_theme', 'subinsb_2_setup' );
  *
  * @global int $content_width
  */
-function subinsb_2_content_width() {
-  $GLOBALS['content_width'] = apply_filters( 'subinsb_2_content_width', 640 );
+function brenton_content_width() {
+  $GLOBALS['content_width'] = apply_filters( 'brenton_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'subinsb_2_content_width', 0 );
+add_action( 'after_setup_theme', 'brenton_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function subinsb_2_widgets_init() {
+function brenton_widgets_init() {
   register_sidebar( array(
-    'name'          => esc_html__( 'Sidebar', 'subinsb-2' ),
+    'name'          => esc_html__( 'Sidebar', 'brenton' ),
     'id'            => 'sidebar-1',
-    'description'   => esc_html__( 'Add widgets here.', 'subinsb-2' ),
+    'description'   => esc_html__( 'Add widgets here.', 'brenton' ),
     'before_widget' => '<section id="%1$s" class="widget %2$s">',
     'after_widget'  => '</section>',
     'before_title'  => '<h2 class="widget-title">',
     'after_title'   => '</h2>',
   ) );
 }
-add_action( 'widgets_init', 'subinsb_2_widgets_init' );
+add_action( 'widgets_init', 'brenton_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function subinsb_2_scripts() {
-  wp_enqueue_style( 'subinsb-2-style', get_stylesheet_uri() );
+function brenton_scripts() {
+  wp_enqueue_style( 'brenton-style', get_stylesheet_uri() );
 }
-add_action( 'wp_enqueue_scripts', 'subinsb_2_scripts' );
+add_action( 'wp_enqueue_scripts', 'brenton_scripts' );
 
 /**
  * Implement the Custom Header feature.

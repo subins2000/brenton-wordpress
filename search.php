@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 get_header(); ?>
@@ -16,7 +16,7 @@ get_header(); ?>
     if ( have_posts() ) : ?>
 
       <header class="page-header content-box">
-        <h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'subinsb-2' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+        <h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'brenton' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
         <?php get_search_form();?>
       </header><!-- .page-header -->
 
@@ -33,7 +33,7 @@ get_header(); ?>
 
       endwhile;
 
-      subinsb_2_paging_nav();
+      brenton_paging_nav();
 
     else :
 

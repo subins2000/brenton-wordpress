@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 ?>

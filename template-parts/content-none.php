@@ -4,31 +4,31 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 ?>
 
 <section class="no-results not-found content-box">
   <header class="page-header">
-    <h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'subinsb-2' ); ?></h1>
+    <h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'brenton' ); ?></h1>
   </header><!-- .page-header -->
 
   <div class="page-content">
     <?php
     if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
-      <p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'subinsb-2' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
+      <p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'brenton' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
     <?php elseif ( is_search() ) : ?>
 
-      <p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'subinsb-2' ); ?></p>
+      <p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'brenton' ); ?></p>
       <?php
         get_search_form();
 
     else : ?>
 
-      <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'subinsb-2' ); ?></p>
+      <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'brenton' ); ?></p>
       <?php
         get_search_form();
 

@@ -12,33 +12,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses subinsb_2_header_style()
+ * @uses brenton_header_style()
  */
-function subinsb_2_custom_header_setup() {
-  add_theme_support( 'custom-header', apply_filters( 'subinsb_2_custom_header_args', array(
+function brenton_custom_header_setup() {
+  add_theme_support( 'custom-header', apply_filters( 'brenton_custom_header_args', array(
     'default-image'          => '',
     'default-text-color'     => '000000',
     'width'                  => 1000,
     'height'                 => 250,
     'flex-height'            => true,
-    'wp-head-callback'       => 'subinsb_2_header_style',
+    'wp-head-callback'       => 'brenton_header_style',
   ) ) );
 }
-add_action( 'after_setup_theme', 'subinsb_2_custom_header_setup' );
+add_action( 'after_setup_theme', 'brenton_custom_header_setup' );
 
-if ( ! function_exists( 'subinsb_2_header_style' ) ) :
+if ( ! function_exists( 'brenton_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see subinsb_2_custom_header_setup().
+ * @see brenton_custom_header_setup().
  */
-function subinsb_2_header_style() {
+function brenton_header_style() {
   $header_text_color = get_header_textcolor();
 
   /*

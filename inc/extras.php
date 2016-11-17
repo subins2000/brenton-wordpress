@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 /**
@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function subinsb_2_body_classes( $classes ) {
+function brenton_body_classes( $classes ) {
   // Adds a class of group-blog to blogs with more than 1 published author.
   if ( is_multi_author() ) {
     $classes[] = 'group-blog';
@@ -26,4 +26,4 @@ function subinsb_2_body_classes( $classes ) {
 
   return $classes;
 }
-add_filter( 'body_class', 'subinsb_2_body_classes' );
+add_filter( 'body_class', 'brenton_body_classes' );

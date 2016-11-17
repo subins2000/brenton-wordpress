@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 get_header();
@@ -13,16 +13,16 @@ get_header();
     <h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
     <div class="entry-meta">
       <?php
-      subinsb_2_breadcrumbs();
+      brenton_breadcrumbs();
       ?>
       <p>
         <?php
         if('post' == get_post_type()){
-          $tags_list = get_the_tag_list( '', __( ', ', 'subinsb-2' ) );
+          $tags_list = get_the_tag_list( '', __( ', ', 'brenton' ) );
           if($tags_list){
         ?>
           <div class="tags-links" title="Tags">
-            <?php printf( __( '%1$s', 'subinsb-2' ), $tags_list ); ?>
+            <?php printf( __( '%1$s', 'brenton' ), $tags_list ); ?>
           </div>
         <?php
           }
@@ -30,8 +30,8 @@ get_header();
         ?>
       </p>
       <?php
-      subinsb_2_posted_on();
-      subinsb_2_comments_count();
+      brenton_posted_on();
+      brenton_comments_count();
       ?>
     </div><!-- .entry-meta -->
   </div>
@@ -43,9 +43,9 @@ get_header();
 
       get_template_part( 'template-parts/content', get_post_format() );
       
-      subinsb_2_post_social();
+      brenton_post_social();
       
-      subinsb_2_post_nav();
+      brenton_post_nav();
 
       comments_template();
 

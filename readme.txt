@@ -1,4 +1,4 @@
-=== Subin\'s Blog V2 ===
+=== Brenton ===
 
 Contributors: automattic
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
@@ -25,7 +25,7 @@ Hi. I'm a starter theme called Subin\'s Blog V2, or underscores, if you like. I'
 
 = Does this theme support any plugins? =
 
-Subin\'s Blog V2 includes support for Infinite Scroll in Jetpack.
+Brenton includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

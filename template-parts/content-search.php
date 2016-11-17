@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 ?>
@@ -16,13 +16,13 @@
     <?php if ( 'post' === get_post_type() ) : ?>
       <div class="entry-meta">
         <?php
-        subinsb_2_posted_on(true);
-        subinsb_2_comments_count();
-        $categories_list = get_the_category_list( __( ', ', 'subinsb-2' ) );
-        if($categories_list && subinsb_2_categorized_blog()){
+        brenton_posted_on(true);
+        brenton_comments_count();
+        $categories_list = get_the_category_list( __( ', ', 'brenton' ) );
+        if($categories_list && brenton_categorized_blog()){
         ?>
           <span class="cat-links post-nav-item"><?php 
-          printf( __( '%1$s', 'subinsb-2' ), $categories_list );
+          printf( __( '%1$s', 'brenton' ), $categories_list );
           ?></span>
         <?php
         }

@@ -1,5 +1,5 @@
 /*
-Theme Name: Subin's Blog V2
+Theme Name: Brenton
 Theme URI: http://underscores.me/
 Author: Subin Siby
 Author URI: http://subinsb.com
@@ -7,7 +7,7 @@ Description: Theme for http://subinsb.com
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: subinsb-2
+Text Domain: brenton
 */
 /*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 
@@ -401,24 +401,6 @@ body{
   background: #000;
 }
 
-body:before{
-	content: "";
-	position: fixed;
-  top: -50%;
-  left: -50%;
-  bottom: -50%;
-  right: -50%;
-	z-index: -1;
-	-webkit-transform: rotate(-30deg);
-	-moz-transform: rotate(-30deg);
-	-ms-transform: rotate(-30deg);
-	-o-transform: rotate(-30deg);
-	transform: rotate(-30deg);
-  background-image: url("/wp-content/themes/compressed/bg.png");
-  background-color: #000;
-  background-repeat: repeat;
-}
-
 a{
   color: #4472B9;
   text-decoration: none;
@@ -447,16 +429,16 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   clear: both;
 }
 
-.site-header{
-  text-align: center;
-}
-
 .site-header a{
   color: #fff;
 }
 
 .site-header p{
   margin: 0;
+}
+
+.site-branding{
+  display: inline-block;
 }
 
 .site-title{
@@ -466,22 +448,21 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   padding: 0.5em 0;
 }
 
-.site-header #search-toggle {
+#search-box{
+  float: right;
+  margin: 70px 0 0;
+}
+
+#search-toggle {
+  display: inline-block;
   width: 30px;
   height: 30px;
   fill: #fff;
-  vertical-align: bottom;
-  margin: 1em 0;
+  vertical-align: middle;
 }
 
 #search-form{
-  position: relative;
-  opacity: 0;
-  z-index: 3;
-  -webkit-transition: opacity 0.7s ease-in-out;
-  -moz-transition: opacity 0.7s ease-in-out;
-  -o-transition: opacity 0.7s ease-in-out;
-  transition: opacity 0.7s ease-in-out;
+  display: inline-block;
 }
 
 #search-form.active{
@@ -493,20 +474,28 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 }
 
 #search-form input{
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 54px;
-  width: 0;
-  margin: 0 auto;
-  -webkit-transition: width 0.7s ease-in-out;
-  -moz-transition: width 0.7s ease-in-out;
-  -o-transition: width 0.7s ease-in-out;
-  transition: width 0.7s ease-in-out;
+  padding: 3px 6px;
+  border: 0;
+  border-bottom: 2px solid #737373;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  vertical-align: middle;
+  color: white;
+  background: none;
+  outline: none;
 }
 
-#search-form.active input{
-  width: 100%;
+#search-box:hover #search-toggle, #search-box input:focus #search-toggle {
+  fill: #4CA454;
+}
+
+#search-box input:focus, #search-box:target #search-box input {
+  border-bottom-color: #4CA454;
+}
+
+#site-navigation{
+  margin-top: 40px;
 }
 
 #site-navigation ul{
@@ -520,6 +509,7 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   font-size: 1rem;
   text-transform: uppercase;
   padding: 15px 0;
+  text-align: center;
 }
 
 #site-navigation li.current-menu-parent{
@@ -527,11 +517,28 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   width: 16.6666%;
   position: relative;
   color: #fff;
-  cursor: default;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
 }
 
-#site-navigation li.current-menu-parent:hover{
-  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
+#site-navigation li.current-menu-parent:nth-child(1), #site-navigation li:nth-child(1) .sub-menu{
+  background: #4CA454;
+}
+#site-navigation li.current-menu-parent:nth-child(2), #site-navigation li:nth-child(2) .sub-menu{
+  background: #6693D6;
+}
+#site-navigation li.current-menu-parent:nth-child(3), #site-navigation li:nth-child(3) .sub-menu{
+  background: #BE4C39;
+}
+#site-navigation li.current-menu-parent:nth-child(4), #site-navigation li:nth-child(4) .sub-menu{
+  background: #E18728;
+}
+#site-navigation li.current-menu-parent:nth-child(5), #site-navigation li:nth-child(5) .sub-menu{
+  background: #9351A6;
+}
+#site-navigation li.current-menu-parent:nth-child(6), #site-navigation li:nth-child(6) .sub-menu{
+  background: #d49b00;
 }
 
 #site-navigation li .sub-menu{
@@ -557,28 +564,9 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   width: 100%;
 }
 
-#site-navigation li.current-menu-parent:nth-child(1), #site-navigation li:nth-child(1) .sub-menu{
-  background: #4CA454;
-}
-#site-navigation li.current-menu-parent:nth-child(2), #site-navigation li:nth-child(2) .sub-menu{
-  background: #6693D6;
-}
-#site-navigation li.current-menu-parent:nth-child(3), #site-navigation li:nth-child(3) .sub-menu{
-  background: #BE4C39;
-}
-#site-navigation li.current-menu-parent:nth-child(4), #site-navigation li:nth-child(4) .sub-menu{
-  background: #E18728;
-}
-#site-navigation li.current-menu-parent:nth-child(5), #site-navigation li:nth-child(5) .sub-menu{
-  background: #9351A6;
-}
-#site-navigation li.current-menu-parent:nth-child(6), #site-navigation li:nth-child(6) .sub-menu{
-  background: #d49b00;
-}
-
 #content{
   z-index: 5;
-  background: #EEE;
+  background: linear-gradient( 0deg, #000, #EEE );
 }
 
 #primary{
@@ -592,7 +580,7 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 }
 
 .content-box{
-  margin: 40px 20px;
+  margin: 40px;
   padding: 40px;
   background: #fff;
   color: #000;
@@ -606,6 +594,10 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 /**
  * Widget
  */
+#secondary .widget{
+  margin-left: 0;
+}
+
 #mc_signup_submit{
   margin-top: 0 !important;
 }

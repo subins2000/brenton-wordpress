@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Subin\'s_Blog_V2
+ * @package Brenton 
  */
 
 get_header(); ?>
