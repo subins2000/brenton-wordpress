@@ -398,7 +398,7 @@ body{
   font-weight: 400;
   color: #fff;
   line-height: 1.5;
-  background: #000;
+  background: linear-gradient( 0deg, #4CA454, #000 );
 }
 
 a{
@@ -475,6 +475,7 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 
 #search-form input{
   padding: 3px 6px;
+  width: 300px;
   border: 0;
   border-bottom: 2px solid #737373;
   -webkit-box-shadow: none;
@@ -532,13 +533,13 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   background: #BE4C39;
 }
 #site-navigation li.current-menu-parent:nth-child(4), #site-navigation li:nth-child(4) .sub-menu{
-  background: #E18728;
+  background: #d49b00;
 }
 #site-navigation li.current-menu-parent:nth-child(5), #site-navigation li:nth-child(5) .sub-menu{
   background: #9351A6;
 }
 #site-navigation li.current-menu-parent:nth-child(6), #site-navigation li:nth-child(6) .sub-menu{
-  background: #d49b00;
+  background: #E18728;
 }
 
 #site-navigation li .sub-menu{
@@ -566,7 +567,7 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 
 #content{
   z-index: 5;
-  background: linear-gradient( 0deg, #000, #EEE );
+  background: linear-gradient( 0deg, transparent, #EEE );
 }
 
 #primary{
@@ -619,7 +620,7 @@ article{
 }
 
 article.summary.category-short-post{
-  background-color: #d49b00;
+  background-color: #E18728;
   color: #fff;
 }
 
@@ -707,10 +708,6 @@ pre p, blockquote p{
   border: 1px solid black;
 }
 
-header.content-box h1{
-  margin: 0;
-}
-
 .entry-content figure, .entry-content img{
   margin: 0;
   max-width: 100%;
@@ -720,7 +717,7 @@ header.content-box h1{
  * Single Post
  */
 #single-header{
-  padding: 50px 10px 40px;
+  padding: 50px 30px 40px;
   text-align: center;
   font-size: 1rem;
   color: #050;
@@ -869,12 +866,27 @@ footer .site-info{
   .content-wrapper{
     width: 100%;
   }
+  .site-branding, #search-box{
+    margin-left: 40px;
+    margin-right: 40px;
+  }
   #SocializerFloatW{
     display: none;
   }
 }
 
 @media screen and (max-width: 830px){
+  .site-header{
+    text-align: center;
+  }
+  #search-box{
+    float: none;
+    margin: 20px 0;
+  }
+  #search-box input{
+    width: 80vw;
+  }
+
   #site-navigation li.current-menu-parent{
     width: 33.33333% !important;
   }

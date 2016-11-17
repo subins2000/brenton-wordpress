@@ -13,7 +13,7 @@
       </div><!-- #content -->
       <footer id="colophon" class="site-footer" role="contentinfo">
         <div class="footer-nav">
-          <blockquote>I'm a socialist and a <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software" target="_blank">FOSS</a> developer<br/>Teenage is sweet !</blockquote>
+          <blockquote><span title="a.k.a SubinSiby">subins2000</span> contribute to & develop<br/><a href="https://en.wikipedia.org/wiki/Free_and_open-source_software" target="_blank">Free & Open Source Softwares</a><br/>Teenage is sweet !</blockquote>
           <div style="text-align: center;">
             <div class="side">
               <h2>Site Links</h2>
@@ -23,6 +23,7 @@
                 <li><a href="#search-form">Search</a></li>
                 <li><a target="_blank" href="/sitemap.xml">Sitemap</a></li>
                 <li><a target="_blank" href="http://feeds.feedburner.com/subinsblog">RSS</a></li>
+                <li><a href="#mailchimpsf_widget-2">Subscribe!</a></li>
               </ul>
             </div>
             <div class="side">
@@ -32,7 +33,8 @@
                 <li><a target="_blank" href="https://www.facebook.com/SubinSiby">Facebook</a></li>
                 <li><a target="_blank" href="https://www.twitter.com/SubinSiby">@SubinSiby</a></li>
                 <li><a target="_blank" href="https://plus.google.com/+SubinSiby">+SubinSiby</a></li>
-                <li><a target="_blank" href="https://about.me/subinsiby">About.Me</a></li>
+                <li><a target="_blank" href="https://youtube.com/subinsiby">YouTube</a></li>
+                <li><a target="_blank" href="https://github.com/subins2000">GitHub</a></li>
               </ul>
             </div>
           </div>
@@ -40,10 +42,10 @@
         <div class="site-info">
           <h2>Colophon</h2>
           <p>
-            This blog is created, written and maintained by Subin Siby. It is built on <a target="_blank" href="http://wordpress.org/">WordPress</a> and hosted for free by <a target="_blank" href="http://openshift.com">OpenShift</a>. This blog is continuing, because of the support from you and the <a href="/donate">donations</a> from others.
-          </p><br/>
-          <p>I'm not making any money by annoying Ads. So, Please be generous to consider a <a href="/donate">donation</a> if you found something helpful.</p>
-          <div class="smilie" title="Be Positive & Happy">:-)</div>
+            This blog is created, written and maintained by Subin Siby. It is built on <a target="_blank" href="http://wordpress.org/">WordPress</a> and hosted for free by <a target="_blank" href="http://openshift.com">OpenShift</a>.This blog is continuing because of the support from you and the <a href="/donate">donations</a> from others.
+          </p>
+          <p>I'm not making any money by annoying Ads. So, Please be <b>generous</b> to consider a <a href="/donate">donation</a> if you found something helpful.</p>
+          <div class="smilie" title="Did you know that this is just a text transformed into a smiley face by CSS ? Check the source">:-)</div>
           <span></span><span></span><span></span><span></span><span></span>
         </div><!-- .site-info -->
       </footer><!-- #colophon -->
