@@ -17,12 +17,13 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area content-box">
  <?php if (comments_open()) : ?>
   <div id="disqus_thread"><p style="color:black;"></p></div>
   <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'subinsblog'; // Required - Replace example with your forum shortname
+    var disqus_url = '<?php echo str_replace('https://', 'http://', get_permalink());?>';
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -1,38 +1,49 @@
 <?php
 /**
- * The template for displaying Search Results pages.
+ * The template for displaying search results pages.
  *
- * @package Subin's Blog V 1
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package Brenton 
  */
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
+    <?php
+    if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'subinsb-v1' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
+      <header class="page-header content-box">
+        <h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'brenton' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+        <?php get_search_form();?>
+      </header><!-- .page-header -->
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+      <?php
+      /* Start the Loop */
+      while ( have_posts() ) : the_post();
 
-				<?php get_template_part( 'content', 'search' ); ?>
+        /**
+         * Run the loop for the search to output the results.
+         * If you want to overload this in a child theme then include a file
+         * called content-search.php and that will be used instead.
+         */
+        get_template_part( 'template-parts/content', 'search' );
 
-			<?php endwhile; ?>
+      endwhile;
 
-			<?php subinsb_v1_paging_nav(); ?>
+      brenton_paging_nav();
 
-		<?php else : ?>
+    else :
 
-			<?php get_template_part( 'content', 'none' ); ?>
+      get_template_part( 'template-parts/content', 'none' );
 
-		<?php endif; ?>
+    endif; ?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+    </main><!-- #main -->
+  </div><!-- #primary -->
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php
+get_sidebar();
+get_footer();

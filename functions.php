@@ -1,18 +1,13 @@
 <?php
 /**
- * Subin's Blog V 1 functions and definitions
+ * Brenton functions and definitions.
  *
- * @package Subin's Blog V 1
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package Brenton 
  */
 
-/**
- * Set the content width based on the theme's design and stylesheet.
- */
-if ( ! isset( $content_width ) ) {
- $content_width = 640; /* pixels */
-}
-
-if ( ! function_exists( 'subinsb_v1_setup' ) ) :
+if ( ! function_exists( 'brenton_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -20,96 +15,113 @@ if ( ! function_exists( 'subinsb_v1_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function subinsb_v1_setup() {
+function brenton_setup() {
+  /*
+   * Make theme available for translation.
+   * Translations can be filed in the /languages/ directory.
+   * If you're building a theme based on Subin\'s Blog V2, use a find and replace
+   * to change 'brenton' to the name of your theme in all the template files.
+   */
+  load_theme_textdomain( 'brenton', get_template_directory() . '/languages' );
 
- /*
-  * Make theme available for translation.
-  * Translations can be filed in the /languages/ directory.
-  * If you're building a theme based on Subin's Blog V 1, use a find and replace
-  * to change 'subinsb-v1' to the name of your theme in all the template files
-  */
- load_theme_textdomain( 'subinsb-v1', get_template_directory() . '/languages' );
+  // Add default posts and comments RSS feed links to head.
+  add_theme_support( 'automatic-feed-links' );
 
- // Add default posts and comments RSS feed links to head.
- add_theme_support( 'automatic-feed-links' );
+  /*
+   * Let WordPress manage the document title.
+   * By adding theme support, we declare that this theme does not use a
+   * hard-coded <title> tag in the document head, and expect WordPress to
+   * provide it for us.
+   */
+  add_theme_support( 'title-tag' );
 
- /*
-  * Enable support for Post Thumbnails on posts and pages.
-  *
-  * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
-  */
- //add_theme_support( 'post-thumbnails' );
+  /*
+   * Enable support for Post Thumbnails on posts and pages.
+   *
+   * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+   */
+  add_theme_support( 'post-thumbnails' );
 
- // This theme uses wp_nav_menu() in one location.
- register_nav_menus( array(
-  'primary' => __( 'Primary Menu', 'subinsb-v1' ),
- ) );
+  // This theme uses wp_nav_menu() in one location.
+  register_nav_menus( array(
+    'primary' => esc_html__( 'Primary', 'brenton' ),
+  ) );
 
- // Enable support for Post Formats.
- add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+  /*
+   * Switch default core markup for search form, comment form, and comments
+   * to output valid HTML5.
+   */
+  add_theme_support( 'html5', array(
+    'search-form',
+    'comment-form',
+    'comment-list',
+    'gallery',
+    'caption',
+  ) );
 
- // Setup the WordPress core custom background feature.
- add_theme_support( 'custom-background', apply_filters( 'subinsb_v1_custom_background_args', array(
-  'default-color' => 'ffffff',
-  'default-image' => '',
- ) ) );
+  /*
+   * Enable support for Post Formats.
+   * See https://developer.wordpress.org/themes/functionality/post-formats/
+   */
+  add_theme_support( 'post-formats', array(
+    'aside',
+    'image',
+    'video',
+    'quote',
+    'link',
+  ) );
 
- // Enable support for HTML5 markup.
- add_theme_support( 'html5', array(
-  'comment-list',
-  'search-form',
-  'comment-form',
-  'gallery',
- ) );
+  // Set up the WordPress core custom background feature.
+  add_theme_support( 'custom-background', apply_filters( 'brenton_custom_background_args', array(
+    'default-color' => 'ffffff',
+    'default-image' => '',
+  ) ) );
 }
-endif; // subinsb_v1_setup
-add_action( 'after_setup_theme', 'subinsb_v1_setup' );
+endif;
+add_action( 'after_setup_theme', 'brenton_setup' );
 
 /**
- * Register widgetized area and update sidebar with default widgets.
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
  */
-function subinsb_v1_widgets_init() {
- register_sidebar( array(
-  'name'          => __( 'Sidebar', 'subinsb-v1' ),
-  'id'            => 'sidebar-1',
-  'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-  'after_widget'  => '</aside>',
-  'before_title'  => '<h1 class="widget-title">',
-  'after_title'   => '</h1>',
- ) );
+function brenton_content_width() {
+  $GLOBALS['content_width'] = apply_filters( 'brenton_content_width', 640 );
 }
-add_action( 'widgets_init', 'subinsb_v1_widgets_init' );
+add_action( 'after_setup_theme', 'brenton_content_width', 0 );
+
 /**
- * Load Ubuntu Font
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function subinsb_v1_font_url() {
- $font_url = '';
- if ( 'off' !== _x( 'on', 'Ubuntu font: on or off', 'twentyfourteen' ) ) {
-  $font_url = add_query_arg( 'family', urlencode( 'Ubuntu' ), "//fonts.googleapis.com/css" );
- }
- return $font_url;
+function brenton_widgets_init() {
+  register_sidebar( array(
+    'name'          => esc_html__( 'Sidebar', 'brenton' ),
+    'id'            => 'sidebar-1',
+    'description'   => esc_html__( 'Add widgets here.', 'brenton' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+  ) );
 }
+add_action( 'widgets_init', 'brenton_widgets_init' );
+
 /**
  * Enqueue scripts and styles.
  */
-function subinsb_v1_scripts() {
- wp_enqueue_style( 'subinsb-v1-style', get_stylesheet_uri() );
- wp_enqueue_style( 'subinsb-v1-font', subinsb_v1_font_url(), array(), null );
- if(!is_admin()){
-  wp_deregister_script('jquery');
-  wp_register_script('jquery', '', '', '', true);
- }
+function brenton_scripts() {
+  wp_enqueue_style( 'brenton-style', get_stylesheet_uri() );
 }
-add_action( 'wp_enqueue_scripts', 'subinsb_v1_scripts' );
+add_action( 'wp_enqueue_scripts', 'brenton_scripts' );
 
-function twentyfourteen_admin_fonts() {
-	wp_enqueue_style( 'subinsb-v1-font', subinsb_v1_font_url(), array(), null );
-}
-add_action( 'admin_print_scripts-appearance_page_custom-header', 'twentyfourteen_admin_fonts' );
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -125,17 +137,63 @@ require get_template_directory() . '/inc/extras.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-/* Remove Fancy Quotes */
-remove_filter('the_content', 'wptexturize');
-remove_filter('comment_text', 'wptexturize');
-remove_filter ('single_post_title', 'wptexturize');
-remove_filter ('the_title', 'wptexturize');
-remove_filter ('wp_title', 'wptexturize');
 
-/*function pagesFeedRequest($qv) {
-    if (isset($qv['feed']) && !isset($qv['post_type'])){
-        $qv['post_type'] = array('post', 'page');
+/**
+ * Load Jetpack compatibility file.
+ */
+require get_template_directory() . '/inc/jetpack.php';
+
+function nav_parent_class( $classes, $item ) {
+    if($item->menu_item_parent == 0){
+      $classes[] = "current-menu-parent";
     }
-    return $qv;
+    return $classes;
 }
-add_filter('request', 'pagesFeedRequest');*/
+add_filter( 'nav_menu_css_class', 'nav_parent_class', 10, 2 );
+
+// This function adds nice anchor with id attribute to our h2 tags for reference
+// @link: http://www.w3.org/TR/html4/struct/links.html#h-12.2.3
+function anchor_content_headings($content) {
+    // now run the pattern and callback function on content
+    // and process it through a function that replaces the title with an id 
+    $content = preg_replace_callback("/\<h([1|2|3])\>(.*?)\<\/h([1|2|3])\>/", function ($matches) {
+      $hTag = $matches[1];
+      $title = $matches[2];
+      $slug = "article-" . sanitize_title_with_dashes($title);
+      return '<a href="#'. $slug .'"><h'. $hTag .' id="' . $slug . '">' . $title . '</h'. $hTag .'></a>';
+    }, $content);
+    return $content;
+}
+add_filter('the_content', 'anchor_content_headings');
+
+/**
+ * Remove unwanted stuff
+ */
+function wpdocs_dequeue_script() {
+        wp_dequeue_script( 'jquery' ); 
+} 
+add_action( 'wp_print_scripts', 'wpdocs_dequeue_script', 100 );
+
+function disable_emojicons_tinymce( $plugins ) {
+  if ( is_array( $plugins ) ) {
+    return array_diff( $plugins, array( 'wpemoji' ) );
+  } else {
+    return array();
+  }
+}
+
+function disable_wp_emojicons() {
+
+  // all actions related to emojis
+  remove_action( 'admin_print_styles', 'print_emoji_styles' );
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
+  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+
+  // filter to remove TinyMCE emojis
+  add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
+}
+add_action( 'init', 'disable_wp_emojicons' );
