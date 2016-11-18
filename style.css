@@ -567,7 +567,7 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
 
 #content{
   z-index: 5;
-  background: linear-gradient( 0deg, transparent, #EEE );
+  background: linear-gradient( 0deg, transparent, #EEE 60% );
 }
 
 #primary{
