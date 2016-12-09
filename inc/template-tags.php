@@ -197,7 +197,7 @@ if(!function_exists("brenton_post_social")){
   function brenton_post_social(){
     ?>
     <div id="post-social" class="content-box">
-      <iframe src="https://www.facebook.com/plugins/like.php?href=<?php echo the_permalink();?>&width=50&layout=box_count&action=like&show_faces=true&share=true&height=65&appId=205948326169147" width="50" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" width="50" height="60"></iframe>
+      <iframe src="https://www.facebook.com/plugins/like.php?href=<?php echo the_permalink();?>&width=50&layout=box_count&action=like&show_faces=true&share=true&height=65&appId=205948326169147" width="53" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
       <iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&size=tall&hl=en-US&url=<?php echo the_permalink();?>&parent=<?php echo site_url();?>" allowtransparency="true" frameborder="0" scrolling="no" title="+1" width="50" height="65"></iframe>
       <iframe src="https://platform.twitter.com/widgets/tweet_button.html?url=<?php echo the_permalink();?>&count=vertical&size=large" frameborder="0" height="30" width="62"></iframe>
       <script>reddit_url='<?php echo the_permalink();?>';</script>
