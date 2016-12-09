@@ -167,12 +167,15 @@ function anchor_content_headings($content) {
 add_filter('the_content', 'anchor_content_headings');
 
 /**
- * Remove unwanted stuff
+ * Remove jQuery
  */
-function wpdocs_dequeue_script() {
-        wp_dequeue_script( 'jquery' ); 
-} 
-add_action( 'wp_print_scripts', 'wpdocs_dequeue_script', 100 );
+function brenton_dequeue_scripts($scripts) {
+  if ( ! is_admin() && ! empty( $scripts->registered['jquery'] ) ) {
+    $jquery_dependencies = $scripts->registered['jquery']->deps;
+    $scripts->registered['jquery']->deps = array_diff( $jquery_dependencies, array( 'jquery-migrate', 'jquery-core' ) );
+  }
+}
+add_action( 'wp_default_scripts', 'brenton_dequeue_scripts' );
 
 function disable_emojicons_tinymce( $plugins ) {
   if ( is_array( $plugins ) ) {
