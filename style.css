@@ -713,6 +713,11 @@ pre p, blockquote p{
   max-width: 100%;
 }
 
+.entry-content .aligncenter{
+  margin: auto;
+  display: table;
+}
+
 /**
  * Single Post
  */
