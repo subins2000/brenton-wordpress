@@ -423,10 +423,10 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a{
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
-.content-wrapper:after { 
+.content-wrapper:after {
   content: " ";
-  display: block; 
-  height: 0; 
+  display: block;
+  height: 0;
   clear: both;
 }
 
@@ -667,6 +667,15 @@ article.summary .entry-summary{
   margin-top: 0px;
 }
 
+.entry-content p code {
+    padding: 0.2em 0.2em;
+    margin: 0;
+    background-color: rgba(0,0,0,1);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 85%;
+}
+
 .entry-content h1, .entry-content h2, .entry-content h3{
   font-weight: bold;
 }
@@ -896,7 +905,7 @@ footer .site-info{
   #site-navigation li.current-menu-parent{
     width: 33.33333% !important;
   }
-  
+
   .content-box{
     margin: 10px;
     padding: 40px 20px;
@@ -923,12 +932,12 @@ footer .site-info{
   #primary, #secondary{
     width: 100%;
   }
-  
+
   .content-box{
     margin: 20px 0;
     padding: 20px 10px;
   }
-  
+
   .site-footer .side:nth-child(1){
     padding-right: 0px;
   }
