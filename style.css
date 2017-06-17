@@ -665,8 +665,8 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a {
     padding-top: 0 !important;
 }
 
-#mailchimpsf_widget-2 {
-    background: repeating-linear-gradient( 45deg, #CCC, #CCC 10px, #FFFFFF 10px, #FFFFFF 20px);
+#newsletterwidget-2 {
+    background: #4CA454;
 }
 
 
