@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Brenton 
+ * @package Brenton
  */
 
 if ( ! function_exists( 'brenton_setup' ) ) :
@@ -205,3 +205,13 @@ function disable_wp_emojicons() {
   add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
 }
 add_action( 'init', 'disable_wp_emojicons' );
+
+// stop wp removing empty span tags
+function ikreativ_tinymce_fix( $init ) {
+    // html elements being stripped
+    $init['extended_valid_elements'] = 'span[*]';
+
+    // pass back to wordpress
+    return $init;
+}
+add_filter('tiny_mce_before_init', 'ikreativ_tinymce_fix');
