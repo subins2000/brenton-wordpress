@@ -665,7 +665,7 @@ nav a, .entry-title, .site-title a, .entry-title a, .padlinks a {
     padding-top: 0 !important;
 }
 
-#newsletterwidget-2 {
+.widget:nth-child(1) {
     background: #4CA454;
     color: #fff;
 }
