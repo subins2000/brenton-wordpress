@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Brenton 
+ * @package Brenton
  */
 
 if ( ! function_exists( 'brenton_posted_on' ) ) :
@@ -125,7 +125,7 @@ add_action( 'save_post',     'brenton_category_transient_flusher' );
 if(!function_exists("brenton_breadcrumbs")){
   function brenton_breadcrumbs(){
     $cats = get_the_category(); //retrieve cats for post
-    
+
     foreach ($cats as $cat) { //go thru to find child one - means cat which has specified parent id
         if ($cat->category_parent != 0) {
             $child = $cat->term_taxonomy_id;
@@ -156,7 +156,7 @@ if ( ! function_exists( 'brenton_paging_nav' ) ) :
        <?php if ( get_next_posts_link() ) : ?>
         <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'brenton' ) ); ?></div>
        <?php endif; ?>
-    
+
        <?php if ( get_previous_posts_link() ) : ?>
         <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'brenton' ) ); ?></div>
        <?php endif; ?>
@@ -176,7 +176,7 @@ if ( ! function_exists( 'brenton_post_nav' ) ) :
     // Don't print empty markup if there's nowhere to navigate.
     $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
     $next     = get_adjacent_post( false, '', false );
-  
+
     if ( ! $next && ! $previous ) {
       return;
     }
@@ -195,12 +195,13 @@ endif;
 
 if(!function_exists("brenton_post_social")){
   function brenton_post_social(){
+    $httpURL = str_replace('https:', 'http:', get_permalink());
     ?>
     <div id="post-social" class="content-box">
-      <iframe src="https://www.facebook.com/plugins/like.php?href=<?php echo the_permalink();?>&width=50&layout=box_count&action=like&show_faces=true&share=true&height=65&appId=205948326169147" width="53" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-      <iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&size=tall&hl=en-US&url=<?php echo the_permalink();?>&parent=<?php echo site_url();?>" allowtransparency="true" frameborder="0" scrolling="no" title="+1" width="50" height="65"></iframe>
+      <iframe src="https://www.facebook.com/plugins/like.php?href=<?php echo $httpURL;?>&width=50&layout=box_count&action=like&show_faces=true&share=true&height=65&appId=205948326169147" width="53" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+      <iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&size=tall&hl=en-US&url=<?php echo $httpURL;?>&parent=<?php echo site_url();?>" allowtransparency="true" frameborder="0" scrolling="no" title="+1" width="50" height="65"></iframe>
       <iframe src="https://platform.twitter.com/widgets/tweet_button.html?url=<?php echo the_permalink();?>&count=vertical&size=large" frameborder="0" height="30" width="62"></iframe>
-      <script>reddit_url='<?php echo the_permalink();?>';</script>
+      <script>reddit_url='<?php echo $httpURL;?>';</script>
       <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
     </div>
     <?php
